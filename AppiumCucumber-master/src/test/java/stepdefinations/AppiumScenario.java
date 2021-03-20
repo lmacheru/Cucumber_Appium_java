@@ -12,15 +12,13 @@ import utility.Hook;
 public class AppiumScenario {
 
 private WebDriver driver;
-	CommonPageFactory Com = new CommonPageFactory(Hook.getDriver());
 	public AppiumScenario() {
 		this.driver = Hook.getDriver();
 	}
 	
 	@Given("^I open the application$")
 	public void i_open_the_application() throws Throwable {
-	 //   Assert.assertTrue(Com.Accessbility.isDisplayed());
-		Com.Accessbility.isDisplayed();
+		Assert.assertTrue(driver.findElement(By.xpath("//*[@text='Accessibility']")).isDisplayed());
 
 	}
 
