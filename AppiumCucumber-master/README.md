@@ -6,6 +6,7 @@ Sample Appium test automation using Cucumber-JVM
 * Java 8
 * Maven
 * IDE with Cucumber Plugin installed
+* Install node js
 * More info on [Appium Setup instructions](http://appium.io/slate/en/master/?ruby#running-appium-on-mac-os-x)
 
 ## Project Structure

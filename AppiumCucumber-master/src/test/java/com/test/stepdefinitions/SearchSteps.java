@@ -1,4 +1,4 @@
-package com.test.stepdefinitions;
+/*package com.test.stepdefinitions;
 
 import com.test.Configurations.FlickrAPIProcessor;
 import com.test.screens.SearchScreen;
@@ -33,4 +33,4 @@ public class SearchSteps {
         List<String> searchResponse = flickrAPIProcessor.getSearchResponseTitles(searchText);
         Assert.assertTrue(searchScreen.getSearchResults(searchText).equals(searchResponse));
     }
-}
+}*/
