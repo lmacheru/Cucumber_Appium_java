@@ -1,6 +1,8 @@
 package com.test.Configurations;
 
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
@@ -13,27 +15,19 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServerHasNotBeenStartedLocallyException;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import java.io.*;
-import org.junit.AfterClass;
-import org.junit.runner.RunWith;
-import com.cucumber.listener.Reporter;
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-import managers.FileReaderManager;
+
 
 import java.io.File;
 
-
 public class BaseClass {
-
+    String Config = "src/test/java/com/test/Configurations/Configuration.properties";
+    public static ExtentReports extent;
     static ThreadLocal<AppiumDriverLocalService> service = new ThreadLocal<>();
-
     static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
 
     public AppiumDriver getDriver() {
         return driver.get();
     }
-
     public AppiumDriverLocalService getService() {
         return service.get();
     }
@@ -61,11 +55,11 @@ public class BaseClass {
         capabilities.setCapability(IOSMobileCapabilityType.LAUNCH_TIMEOUT, 500000);
         capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         driver.set(new IOSDriver<IOSElement>(service.get().getUrl(), capabilities));
-    }
-    public String getReportConfigPath(){
-        String reportConfigPath = properties.getProperty("reportConfigPath");
-        if(reportConfigPath!= null) return reportConfigPath;
-        else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");
+
+        ExtentSparkReporter spark = new ExtentSparkReporter("Reports/ExtentReportResults.html");
+        extent = new ExtentReports();
+
+        extent.attachReporter(spark);
     }
     /*
     *   Stop Appium Server Programmatically before each scenario
@@ -78,7 +72,6 @@ public class BaseClass {
         if (service.get() != null) {
             service.get().stop();
         }
-        Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
-
+        extent.flush();
     }
 }
