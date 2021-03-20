@@ -30,7 +30,7 @@ public class Hook {
 
 	}
 	
-	@Before("@wabeda")
+	@Before("@appium")
 	public void setUpAppium() throws MalformedURLException
 	{
 		DesiredCapabilities cap = new DesiredCapabilities();
