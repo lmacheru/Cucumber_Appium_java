@@ -1,30 +1,5 @@
-# AppiumCucumber
-Sample Appium test automation using Cucumber-JVM
+# Cucumber Framework
+Hi Guys, this is Chirag Singh and this repository contains all the code which I created on the You Tube Channel "FREE AUTOMATION LEARNING". You can download the code and run these code at your machine.
 
-## Pre-requisites
-* Appium 1.7
-* Java 8
-* Maven
-* IDE with Cucumber Plugin installed
-* Install node js
-* More info on [Appium Setup instructions](http://appium.io/slate/en/master/?ruby#running-appium-on-mac-os-x)
-
-## Project Structure
-* Configuration package - Hooks and API Processor
-* Runners - Cucumber Runner Test
-* Screens - Page Classes with Page Actions defined
-* Step Definitions - Screen and its Steps Defs.
-* Features - cucumber features
-
-## Dependencies
-* Appium Java Client
-* Cucumber JVM
-* Cucumber Java
-* Rest Assured - API processing
-
-## Test Execution
-$ `git clone https://github.com/SrinivasanTarget/AppiumCucumber.git `
-
-$ `mvn clean install`
-
-
+You can subscribe my youtube channel. See the below link for youtube channel.
+https://www.youtube.com/channel/UCFs7BfAeJI6MtdqzTXdA9Og
