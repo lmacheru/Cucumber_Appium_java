@@ -1,23 +1,19 @@
 
 package utility;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
-
-import cucumber.api.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class Hook {
 
@@ -45,13 +41,16 @@ public class Hook {
 	}
 	
 	@After
-	public void tearDown()
-	{
+	public void tearDown() throws IOException, InterruptedException {
+
 		driver.quit();
+		Thread.sleep(6000);
 	}
 	
 	public static WebDriver getDriver()
 	{
 		return driver;
 	}
+
+
 }
