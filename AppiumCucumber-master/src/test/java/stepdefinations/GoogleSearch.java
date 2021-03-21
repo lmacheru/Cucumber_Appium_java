@@ -2,6 +2,7 @@ package stepdefinations;
 
 import java.util.concurrent.TimeUnit;
 
+import Common.WebPageFac;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +16,7 @@ import utility.Hook;
 public class GoogleSearch {
 
 	private WebDriver driver;
-	
+	WebPageFac WebElementPage = new WebPageFac();
 	public GoogleSearch() {
 		this.driver = Hook.getDriver();
 	}
@@ -34,30 +35,31 @@ public class GoogleSearch {
 	public void i_validate_the_search_text_field() throws Throwable {
 		Thread.sleep(5000);
 
-		Assert.assertTrue(driver.findElement(By.name("q")).isDisplayed());
+		//Assert.assertTrue(driver.findElement(By.name("q")).isDisplayed());
+		WebElementPage.GoogleSearchBox.isDisplayed();
 	}
 	
 	@Then("^I validate the Gmail Link$")
 	public void i_validate_the_Gmail_Link() throws Throwable {
 		Thread.sleep(5000);
-
 		Assert.assertTrue(driver.findElement(By.linkText("Gmail")).isDisplayed());
 	}
 
 	@Then("^I validate the Image Link$")
 	public void i_validate_the_Image_Link() throws Throwable {
 		Thread.sleep(5000);
-
 		Assert.assertTrue(driver.findElement(By.linkText("Image")).isDisplayed());
 	}
 	
 	@When("^I enter \"([^\"]*)\" in search keyword$")
 	public void i_enter_in_search_keyword(String searchText) throws Throwable {
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		//driver.findElement(By.name("q")).clear();
+		//driver.findElement(By.name("q")).sendKeys(searchText);
 
-		driver.findElement(By.name("q")).clear();
-		driver.findElement(By.name("q")).sendKeys(searchText);
 		Thread.sleep(5000);
+		WebElementPage.GoogleSearchBox.clear();
+		WebElementPage.GoogleSearchBox.sendKeys(searchText);
 	}
 
 	@Then("^I validate searched text$")
