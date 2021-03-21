@@ -5,6 +5,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import cucumber.api.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +21,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class Hook {
 
-	private static WebDriver driver;
+	public static WebDriver driver;
 	
 	@Before("@weba")
 	public void setUp()
